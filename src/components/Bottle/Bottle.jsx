@@ -12,7 +12,7 @@ const Bottle = ({ bottle,addToCart }) => {
             </div> */}
 
             <div className="card h-[100%] bg-base-100 shadow-xl">
-                <figure className="px-10 pt-10 w">
+                <figure className="px-10 pt-10 w-[50%] mx-auto">
                     <img  src={img}alt="Shoes" />
                 </figure>
                 <div className="card-body items-center text-center">

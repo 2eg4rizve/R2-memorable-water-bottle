@@ -7,6 +7,7 @@ const Bottles = () => {
 
     const [bottles, setBottles] = useState([]);
     const [carts, setCarts] = useState([]);
+    const [sum, setSum] = useState(0);
 
     useEffect(() => {
         fetch('bottles.json')
@@ -20,6 +21,11 @@ const Bottles = () => {
         console.log({ bottle });
         const newCarts = [...carts, bottle];
         setCarts(newCarts);
+
+        console.log(bottle.price);
+
+        const newSum = sum + bottle.price;
+        setSum(newSum);
     }
 
     return (
@@ -28,23 +34,29 @@ const Bottles = () => {
             <div>
                 <p className="text-[30px] text-center font-bold text-red-600">My Bottles : {carts.length}</p>
 
+
+
                 {
                     carts.map(bottle =>
                         //  <li key={bottle.id}>{bottle.name}</li>
                         < Cart
-                        key={bottle.id}
-                        bottle={bottle}
+                            key={bottle.id}
+                            bottle={bottle}
                         ></Cart>
 
                     )
                 }
+
+                <hr className="font-black" />
+
+                <p>Sum : {sum}</p>
 
 
 
             </div>
             <p className="text-[30px] text-center font-bold text-blue-600">Bottles</p>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-5 gap-3">
                 {
                     bottles.map(bottle => <Bottle
                         key={bottle.id}

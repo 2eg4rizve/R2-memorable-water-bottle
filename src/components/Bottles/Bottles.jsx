@@ -28,6 +28,18 @@ const Bottles = () => {
         setSum(newSum);
     }
 
+    const increasingOrder = () => {
+        console.log("increasing Order");
+
+        const sortedProducts = [...bottles];
+        sortedProducts.sort((a, b) => {
+           return  a.price - b.price
+        });
+        setBottles(sortedProducts);
+
+
+    }
+
     return (
         <div>
 
@@ -55,6 +67,9 @@ const Bottles = () => {
 
             </div>
             <p className="text-[30px] text-center font-bold text-blue-600">Bottles</p>
+
+
+            <button onClick={increasingOrder} className="btn btn-primary">sort increasing order</button>
 
             <div className="grid grid-cols-5 gap-3">
                 {

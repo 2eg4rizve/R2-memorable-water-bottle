@@ -40,6 +40,14 @@ const Bottles = () => {
 
     }
 
+    const decreasingOrder =()=>{
+        const sortedProducts =[...bottles];
+        sortedProducts.sort((a,b) => {
+            return b.price-a.price;
+        });
+        setBottles(sortedProducts);
+    }
+
     return (
         <div>
 
@@ -70,6 +78,10 @@ const Bottles = () => {
 
 
             <button onClick={increasingOrder} className="btn btn-primary">sort increasing order</button>
+            <br />
+
+            <button onClick={decreasingOrder} className="btn btn-primary">sort decreasing order</button>
+            <br />
 
             <div className="grid grid-cols-5 gap-3">
                 {

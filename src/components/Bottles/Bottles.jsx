@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Bottle from "../Bottle/Bottle";
+import Cart from "../Cart/Cart";
 
 const Bottles = () => {
 
@@ -16,7 +17,7 @@ const Bottles = () => {
 
     const addToCart = bottle => {
         console.log("add to caet click")
-        console.log({bottle});
+        console.log({ bottle });
         const newCarts = [...carts, bottle];
         setCarts(newCarts);
     }
@@ -26,11 +27,15 @@ const Bottles = () => {
 
             <div>
                 <p className="text-[30px] text-center font-bold text-red-600">My Bottles : {carts.length}</p>
-               
+
                 {
-                    carts.map( bottle => 
-                         
-                        <li key={bottle.id}>{bottle.name}</li>
+                    carts.map(bottle =>
+                        //  <li key={bottle.id}>{bottle.name}</li>
+                        < Cart
+                        key={bottle.id}
+                        bottle={bottle}
+                        ></Cart>
+
                     )
                 }
 

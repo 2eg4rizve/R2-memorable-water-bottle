@@ -1,13 +1,18 @@
 
 
-const Cart = ({bottle}) => {
-    const {name,price}=bottle;
+const Cart = ({ bottle }) => {
+    const { name, price } = bottle;
     return (
-        <div className="flex ">
+        <div className="space-y-4">
 
-            <li>{name}</li>
-            <p className="ml-[50px]">{price}</p>
-            
+
+            <div className="flex">
+                <li>{name}</li>
+                <p className="ml-[50px] mr-[30px]">{price}</p>
+                <button className="btn btn-error mb-[5px]">Delete</button>
+            </div>
+
+
         </div>
     );
 };

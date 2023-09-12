@@ -1,7 +1,7 @@
 
 
 const Cart = ({bottle,handleDelete }) => {
-    const { name, price, id} = bottle;
+    const { name, price} = bottle;
     return (
         <div className="space-y-4">
 

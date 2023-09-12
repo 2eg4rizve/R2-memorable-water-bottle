@@ -25,18 +25,45 @@ const Bottles = () => {
 
     const addToCart = bottle => {
         console.log("add to caet click")
-        console.log({ bottle });
-        const newCarts = [...carts, bottle];
-        setCarts(newCarts);
+        // console.log({ bottle });
 
-        console.log(bottle.price);
+        const result = carts.find((item) => bottle.id === item.id)
 
-        const newSum = sum + bottle.price;
+        if (!result) {
+            const newCarts = [...carts, bottle];
+            setCarts(newCarts);
+
+            console.log(bottle.price);
+
+            const newSum = sum + bottle.price;
+            setSum(newSum);
+        }
+        else {
+
+            return alert("All Ready Added")
+        }
+
+
+
+    }
+
+    const handleDelete = (bottle) => {
+        console.log("Delete Button");
+        console.log(bottle.id);
+
+
+        const result = carts.filter((item) => bottle.id !== item.id)
+
+
+        const newSum = sum - bottle.price;
         setSum(newSum);
+
+
+        setCarts(result);
     }
 
     const all = () => {
-        
+
         setBottles(allBottles);
     }
 
@@ -81,21 +108,19 @@ const Bottles = () => {
         setBottles(result);
     }
 
+
+
     return (
         <div>
 
             <div>
                 <p className="text-[30px] text-center font-bold text-red-600">My Bottles : {carts.length}</p>
-
-
-
                 {
-                    carts.map(bottle =>
-                        //  <li key={bottle.id}>{bottle.name}</li>
-                        < Cart
-                            key={bottle.id}
-                            bottle={bottle}
-                        ></Cart>
+                    carts.map(bottle => < Cart
+                        key={bottle.id}
+                        bottle={bottle}
+                        handleDelete={handleDelete}
+                    ></Cart>
 
                     )
                 }
@@ -131,7 +156,7 @@ const Bottles = () => {
 
             <div className="grid grid-cols-5 gap-3">
                 {
-                    bottles.map(bottle => <Bottle
+                    bottles.map((bottle) => <Bottle
                         key={bottle.id}
                         bottle={bottle}
                         addToCart={addToCart}

@@ -1,6 +1,6 @@
 
 
-const Bottle = ({ bottle,addToCart }) => {
+const Bottle = ({ bottle,addToCart}) => {
     const { name, img, price } = bottle;
     return (
         <div>
